@@ -184,6 +184,22 @@
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
 	},
 	{
+		"file": "D:\\Repos\\Blaster\\Source\\Blaster\\HUD\\CharacterOverlay.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
+			"@D:\\Repos\\Blaster\\.vscode\\compileCommands_Default\\Blaster.258.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Repos\\Blaster\\Source\\Blaster\\HUD\\CharacterOverlay.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
+			"@D:\\Repos\\Blaster\\.vscode\\compileCommands_Default\\Blaster.258.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
 		"file": "D:\\Repos\\Blaster\\Source\\Blaster\\HUD\\OverheadWidget.cpp",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
@@ -257,6 +273,22 @@
 	},
 	{
 		"file": "D:\\Repos\\Blaster\\Source\\Blaster\\Weapon\\Projectile.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
+			"@D:\\Repos\\Blaster\\.vscode\\compileCommands_Default\\Blaster.258.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Repos\\Blaster\\Source\\Blaster\\Weapon\\ProjectileBullet.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
+			"@D:\\Repos\\Blaster\\.vscode\\compileCommands_Default\\Blaster.258.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Repos\\Blaster\\Source\\Blaster\\Weapon\\ProjectileBullet.h",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
 			"@D:\\Repos\\Blaster\\.vscode\\compileCommands_Default\\Blaster.258.rsp"
