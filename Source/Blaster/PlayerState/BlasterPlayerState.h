@@ -27,6 +27,8 @@ public:
 
 	void AddToScore(float ScoreAmount);
 	void AddToDefeats(int32 DefeatsAmount);
+
+	void UpdateDeathMessageHUD(FString KillerName);
 	
 private:
 	UPROPERTY()
@@ -36,4 +38,6 @@ private:
 
 	UPROPERTY(ReplicatedUsing = OnRep_Defeats)
 	int32 Defeats;
+	UFUNCTION(Client, Reliable)
+	void ClientUpdateDeathMessage(const FString& KillerName);
 };

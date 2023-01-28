@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+
+#include "Components/VerticalBox.h"
 #include "CharacterOverlay.generated.h"
 
 /**
@@ -26,5 +28,11 @@ public:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* DefeatsAmount;
+
+	UPROPERTY(meta = (BindWidget))
+	UTextBlock* KillerPlayerText;
+
+	UPROPERTY(meta = (BindWidget))
+	UTextBlock* KilledByText;
 	
 };

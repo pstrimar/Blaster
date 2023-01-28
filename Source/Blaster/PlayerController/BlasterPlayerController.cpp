@@ -23,6 +23,12 @@ void ABlasterPlayerController::OnPossess(APawn *InPawn)
     if (BlasterCharacter)
     {
         SetHUDHealth(BlasterCharacter->GetHealth(), BlasterCharacter->GetMaxHealth());
+        SetHUDDeathMessage("");
+        
+        if (!HasAuthority())
+        {
+            UE_LOG(LogTemp, Warning, TEXT("OnPosses - Set death message to empty string"));
+        }
     }
 }
 
@@ -70,5 +76,21 @@ void ABlasterPlayerController::SetHUDDefeats(int32 Defeats)
     {
         FString DefeatsText = FString::Printf(TEXT("%d"), Defeats);
         BlasterHUD->CharacterOverlay->DefeatsAmount->SetText(FText::FromString(DefeatsText));
+    }
+}
+
+void ABlasterPlayerController::SetHUDDeathMessage(FString KillerName)
+{
+    BlasterHUD = BlasterHUD == nullptr ? Cast<ABlasterHUD>(GetHUD()) : BlasterHUD;
+    bool bHUDValid = BlasterHUD &&
+        BlasterHUD->CharacterOverlay &&
+        BlasterHUD->CharacterOverlay->KilledByText &&
+        BlasterHUD->CharacterOverlay->KillerPlayerText;
+
+    if (bHUDValid)
+    {
+        BlasterHUD->CharacterOverlay->KillerPlayerText->SetText(FText::FromString(KillerName));
+        BlasterHUD->CharacterOverlay->KilledByText->SetVisibility(KillerName == "" ? ESlateVisibility::Hidden : ESlateVisibility::Visible);
+        BlasterHUD->CharacterOverlay->KillerPlayerText->SetVisibility(KillerName == "" ? ESlateVisibility::Hidden : ESlateVisibility::Visible);
     }
 }

@@ -23,7 +23,7 @@ void ABlasterPlayerState::AddToScore(float ScoreAmount)
         Controller = Controller == nullptr ? Cast<ABlasterPlayerController>(Character->Controller) : Controller;
         if (Controller)
         {
-            Controller->SetHUDScore(Score);
+            Controller->SetHUDScore(GetScore());
         }
     }
 }
@@ -55,6 +55,24 @@ void ABlasterPlayerState::AddToDefeats(int32 DefeatsAmount)
             Controller->SetHUDDefeats(Defeats);
         }
     }
+}
+
+void ABlasterPlayerState::ClientUpdateDeathMessage_Implementation(const FString& KillerName)
+{    
+    Character = Character == nullptr ? Cast<ABlasterCharacter>(GetPawn()) : Character;
+    if (Character)
+    {
+        Controller = Controller == nullptr ? Cast<ABlasterPlayerController>(Character->Controller) : Controller;
+        if (Controller)
+        {
+            Controller->SetHUDDeathMessage(KillerName);
+        }
+    }
+}
+
+void ABlasterPlayerState::UpdateDeathMessageHUD(FString KillerName)
+{
+    ClientUpdateDeathMessage(KillerName);
 }
 
 void ABlasterPlayerState::OnRep_Defeats()
