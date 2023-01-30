@@ -94,3 +94,33 @@ void ABlasterPlayerController::SetHUDDeathMessage(FString KillerName)
         BlasterHUD->CharacterOverlay->KillerPlayerText->SetVisibility(KillerName == "" ? ESlateVisibility::Hidden : ESlateVisibility::Visible);
     }
 }
+
+void ABlasterPlayerController::SetHUDWeaponAmmo(int32 Ammo)
+{
+    BlasterHUD = BlasterHUD == nullptr ? Cast<ABlasterHUD>(GetHUD()) : BlasterHUD;
+
+    bool bHUDValid = BlasterHUD && 
+        BlasterHUD->CharacterOverlay && 
+        BlasterHUD->CharacterOverlay->WeaponAmmoAmount;
+
+    if (bHUDValid)
+    {
+        FString AmmoText = FString::Printf(TEXT("%d"), Ammo);
+        BlasterHUD->CharacterOverlay->WeaponAmmoAmount->SetText(FText::FromString(AmmoText));
+    }
+}
+
+void ABlasterPlayerController::SetHUDCarriedAmmo(int32 Ammo)
+{
+    BlasterHUD = BlasterHUD == nullptr ? Cast<ABlasterHUD>(GetHUD()) : BlasterHUD;
+
+    bool bHUDValid = BlasterHUD && 
+        BlasterHUD->CharacterOverlay && 
+        BlasterHUD->CharacterOverlay->CarriedAmmoAmount;
+
+    if (bHUDValid)
+    {
+        FString AmmoText = FString::Printf(TEXT("%d"), Ammo);
+        BlasterHUD->CharacterOverlay->CarriedAmmoAmount->SetText(FText::FromString(AmmoText));
+    }
+}
