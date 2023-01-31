@@ -21,6 +21,7 @@ public:
 	void SetHUDDeathMessage(FString KillerName);
 	void SetHUDWeaponAmmo(int32 Ammo);
 	void SetHUDCarriedAmmo(int32 Ammo);
+	void SetHUDWeaponName(FString WeaponName);
 	virtual void OnPossess(APawn* InPawn) override;
 
 protected:
@@ -29,5 +30,8 @@ protected:
 private:
 	UPROPERTY()
 	class ABlasterHUD* BlasterHUD;
+
+	UFUNCTION(Client, Reliable)
+	void ClientUpdateWeaponName(const FString& WeaponName);
 	
 };

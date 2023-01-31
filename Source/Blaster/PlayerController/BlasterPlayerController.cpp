@@ -15,6 +15,19 @@ void ABlasterPlayerController::BeginPlay()
     BlasterHUD = Cast<ABlasterHUD>(GetHUD());
 }
 
+void ABlasterPlayerController::ClientUpdateWeaponName_Implementation(const FString &WeaponName)
+{
+    BlasterHUD = BlasterHUD == nullptr ? Cast<ABlasterHUD>(GetHUD()) : BlasterHUD;
+    bool bHUDValid = BlasterHUD &&
+        BlasterHUD->CharacterOverlay &&
+        BlasterHUD->CharacterOverlay->WeaponName;
+
+    if (bHUDValid)
+    {
+        BlasterHUD->CharacterOverlay->WeaponName->SetText(FText::FromString(WeaponName));
+    }
+}
+
 void ABlasterPlayerController::OnPossess(APawn *InPawn)
 {
     Super::OnPossess(InPawn);
@@ -93,6 +106,11 @@ void ABlasterPlayerController::SetHUDDeathMessage(FString KillerName)
         BlasterHUD->CharacterOverlay->KilledByText->SetVisibility(KillerName == "" ? ESlateVisibility::Hidden : ESlateVisibility::Visible);
         BlasterHUD->CharacterOverlay->KillerPlayerText->SetVisibility(KillerName == "" ? ESlateVisibility::Hidden : ESlateVisibility::Visible);
     }
+}
+
+void ABlasterPlayerController::SetHUDWeaponName(FString WeaponName)
+{
+    ClientUpdateWeaponName(WeaponName);
 }
 
 void ABlasterPlayerController::SetHUDWeaponAmmo(int32 Ammo)
