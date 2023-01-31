@@ -15,19 +15,6 @@ void ABlasterPlayerController::BeginPlay()
     BlasterHUD = Cast<ABlasterHUD>(GetHUD());
 }
 
-void ABlasterPlayerController::ClientUpdateWeaponName_Implementation(const FString &WeaponName)
-{
-    BlasterHUD = BlasterHUD == nullptr ? Cast<ABlasterHUD>(GetHUD()) : BlasterHUD;
-    bool bHUDValid = BlasterHUD &&
-        BlasterHUD->CharacterOverlay &&
-        BlasterHUD->CharacterOverlay->WeaponName;
-
-    if (bHUDValid)
-    {
-        BlasterHUD->CharacterOverlay->WeaponName->SetText(FText::FromString(WeaponName));
-    }
-}
-
 void ABlasterPlayerController::OnPossess(APawn *InPawn)
 {
     Super::OnPossess(InPawn);
@@ -37,11 +24,6 @@ void ABlasterPlayerController::OnPossess(APawn *InPawn)
     {
         SetHUDHealth(BlasterCharacter->GetHealth(), BlasterCharacter->GetMaxHealth());
         SetHUDDeathMessage("");
-        
-        if (!HasAuthority())
-        {
-            UE_LOG(LogTemp, Warning, TEXT("OnPosses - Set death message to empty string"));
-        }
     }
 }
 
@@ -110,7 +92,15 @@ void ABlasterPlayerController::SetHUDDeathMessage(FString KillerName)
 
 void ABlasterPlayerController::SetHUDWeaponName(FString WeaponName)
 {
-    ClientUpdateWeaponName(WeaponName);
+    BlasterHUD = BlasterHUD == nullptr ? Cast<ABlasterHUD>(GetHUD()) : BlasterHUD;
+    bool bHUDValid = BlasterHUD &&
+        BlasterHUD->CharacterOverlay &&
+        BlasterHUD->CharacterOverlay->WeaponName;
+
+    if (bHUDValid)
+    {
+        BlasterHUD->CharacterOverlay->WeaponName->SetText(FText::FromString(WeaponName));
+    }
 }
 
 void ABlasterPlayerController::SetHUDWeaponAmmo(int32 Ammo)

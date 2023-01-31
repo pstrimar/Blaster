@@ -23,8 +23,6 @@ void ABlasterGameMode::PlayerEliminated(ABlasterCharacter *ElimmedCharacter, ABl
         if (AttackerPlayerState)
         {
             VictimPlayerState->UpdateDeathMessageHUD(AttackerPlayerState->GetPlayerName());
-            
-            UE_LOG(LogTemp, Warning, TEXT("PlayerEliminated - Set death message to %s"), *AttackerPlayerState->GetPlayerName());
         }
     }
     if (ElimmedCharacter)

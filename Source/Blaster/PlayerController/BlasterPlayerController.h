@@ -30,8 +30,5 @@ protected:
 private:
 	UPROPERTY()
 	class ABlasterHUD* BlasterHUD;
-
-	UFUNCTION(Client, Reliable)
-	void ClientUpdateWeaponName(const FString& WeaponName);
 	
 };
