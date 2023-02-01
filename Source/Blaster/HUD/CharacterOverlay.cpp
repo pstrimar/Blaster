@@ -2,4 +2,5 @@
 
 
 #include "CharacterOverlay.h"
+#include "Animation/WidgetAnimation.h"
 

@@ -36,6 +36,9 @@ public:
 
 	float LevelStartingTime = 0.f;
 
+	UPROPERTY(EditDefaultsOnly)
+	float MatchEndWarningThresholdTime = 30.f;
+
 protected:
 	virtual void BeginPlay() override;
 	virtual void OnMatchStateSet() override;
