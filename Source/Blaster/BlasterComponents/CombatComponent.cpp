@@ -185,7 +185,6 @@ void UCombatComponent::SwapWeapons()
 
 	EquippedWeapon->SetWeaponState(EWeaponState::EWS_Equipped);
 	AttachActorToRightHand(EquippedWeapon);
-	EquippedWeapon->SetOwner(Character);
 	EquippedWeapon->SetHUDAmmo();
 	UpdateCarriedAmmo();
 	PlayEquipWeaponSound(EquippedWeapon);
