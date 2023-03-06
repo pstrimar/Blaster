@@ -538,7 +538,7 @@ void UCombatComponent::OnRep_EquippedWeapon()
 
 void UCombatComponent::OnRep_SecondaryWeapon()
 {
-	if (SecondaryWeapon)
+	if (SecondaryWeapon && Character)
 	{
 		SecondaryWeapon->SetWeaponState(EWeaponState::EWS_EquippedSecondary);
 		AttachActorToBackpack(SecondaryWeapon);
@@ -563,6 +563,23 @@ void UCombatComponent::TraceUnderCrosshairs(FHitResult &TraceHitResult)
 		CrosshairWorldPosition,
 		CrosshairWorldDirection
 	);
+
+	if (Character->HasAuthority())
+	{
+		TArray<AActor*> BlasterCharacters;
+		UGameplayStatics::GetAllActorsOfClass(this, ABlasterCharacter::StaticClass(), BlasterCharacters);
+		for (auto& BlasterCharacter : BlasterCharacters)
+		{
+			ABlasterCharacter* BCharacter = Cast<ABlasterCharacter>(BlasterCharacter);
+			if (BCharacter && BCharacter != Character)
+			{
+				FVector DirToCharacter = (BCharacter->GetActorLocation() - Character->GetActorLocation()).GetSafeNormal();
+				float DProd = DirToCharacter.Dot(Character->GetActorForwardVector());
+				FString Text = DProd >= 0.f ? "facing" : "not facing";
+				UE_LOG(LogTemp, Warning, TEXT("User is %s other player"), *Text);
+			}
+		}
+	}	
 
 	if (bScreenToWorld)
 	{

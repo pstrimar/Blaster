@@ -58,5 +58,11 @@ public:
 
 	UPROPERTY(Transient, meta = (BindWidgetAnim))
 	class UWidgetAnimation* MatchEndingWarning;
+
+	UPROPERTY(meta = (BindWidget))
+	class UImage* HighPingImage;
+
+	UPROPERTY(meta = (BindWidgetAnim), Transient)
+	UWidgetAnimation* HighPingAnimation;
 	
 };
